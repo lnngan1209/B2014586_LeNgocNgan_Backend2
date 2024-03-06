@@ -12,7 +12,7 @@ class ContactService {
             phone: payload.phone,
             favorite: payload.favorite,
         };
-        Objects.keys(contact).forEach(
+        Object.keys(contact).forEach(
             (key) => contact[key] === undefined && delete contact[key]
         );
         return contact;
@@ -52,8 +52,8 @@ class ContactService {
         const update = this.extractContactData(payload);
         const result = await this.Contact.findOneAndUpdate(
             filter,
-            { $set: update},
-            { returnDocument: "after"}
+            { $set: update },
+            { returnDocument: "after" }
         );
         return result.value;
     }
